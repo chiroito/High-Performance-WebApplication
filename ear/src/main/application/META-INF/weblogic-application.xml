@@ -1,0 +1,10 @@
+<weblogic-application>
+    <module>
+        <name>web-application-gar</name>
+        <type>GAR</type>
+        <path>lib/web-application-gar.gar</path>
+    </module>
+    <prefer-application-packages>
+        <package-name>org.slf4j</package-name>
+    </prefer-application-packages>
+</weblogic-application>

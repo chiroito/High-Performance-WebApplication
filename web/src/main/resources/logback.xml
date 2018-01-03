@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="true">
+
+    <property name="log_dir" value="~/"/>
+    <property name="format" value="%msg%n"/>
+
+    <!-- For SQL pattern -->
+    <appender name="DB_PERFORMANCE_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${log_dir}/db_performance.log</file>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DB_PERFORMANCE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="DB_PERFORMANCE_FILE"/>
+        <queueSize>100000</queueSize>
+    </appender>
+
+    <logger name="DB_PERFORMANCE_LOG" level="INFO">
+        <appender-ref ref="DB_PERFORMANCE_ASYNC"/>
+    </logger>
+
+    <!-- For Cache pattern -->
+    <appender name="CACHE_PERFORMANCE_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${log_dir}/cache_performance.log</file>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CACHE_PERFORMANCE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="CACHE_PERFORMANCE_FILE"/>
+        <queueSize>100000</queueSize>
+    </appender>
+
+    <logger name="CACHE_PERFORMANCE_LOG" level="INFO">
+        <appender-ref ref="CACHE_PERFORMANCE_ASYNC"/>
+    </logger>
+
+    <!-- For In-place pattern -->
+    <appender name="DELEGATE_PERFORMANCE_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${log_dir}/delegate_performance.log</file>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DELEGATE_PERFORMANCE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="DELEGATE_PERFORMANCE_FILE"/>
+        <queueSize>100000</queueSize>
+    </appender>
+
+    <logger name="DELEGATE_PERFORMANCE_LOG" level="INFO">
+        <appender-ref ref="DELEGATE_PERFORMANCE_ASYNC"/>
+    </logger>
+
+    <root/>
+
+</configuration>
